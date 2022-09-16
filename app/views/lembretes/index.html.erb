@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lembretes</h1>
+
+<div id="lembretes">
+  <% @lembretes.each do |lembrete| %>
+    <%= render lembrete %>
+    <p>
+      <%= link_to "Show this lembrete", lembrete %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New lembrete", new_lembrete_path %>

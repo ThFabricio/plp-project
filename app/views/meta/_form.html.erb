@@ -1,0 +1,37 @@
+<%= form_with(model: metum) do |form| %>
+  <% if metum.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(metum.errors.count, "error") %> prohibited this metum from being saved:</h2>
+
+      <ul>
+        <% metum.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div>
+    <%= form.label :frequencia, style: "display: block" %>
+    <%= form.text_field :frequencia %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
