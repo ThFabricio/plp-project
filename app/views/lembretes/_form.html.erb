@@ -1,0 +1,32 @@
+<%= form_with(model: lembrete) do |form| %>
+  <% if lembrete.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(lembrete.errors.count, "error") %> prohibited this lembrete from being saved:</h2>
+
+      <ul>
+        <% lembrete.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :descricao, style: "display: block" %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div>
+    <%= form.label :data, style: "display: block" %>
+    <%= form.date_field :data %>
+  </div>
+
+  <div>
+    <%= form.label :horario, style: "display: block" %>
+    <%= form.time_field :horario %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

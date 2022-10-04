@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @metum %>
+
+<div>
+  <%= link_to "Edit this metum", edit_metum_path(@metum) %> |
+  <%= link_to "Back to meta", meta_path %>
+
+  <%= button_to "Destroy this metum", @metum, method: :delete %>
+</div>

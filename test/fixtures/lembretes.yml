@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyText
+  data: 2022-09-16
+  horario: 2022-09-16 14:35:33
+
+two:
+  descricao: MyText
+  data: 2022-09-16
+  horario: 2022-09-16 14:35:33

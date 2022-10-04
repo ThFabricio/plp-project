@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lembrete %>
+
+<div>
+  <%= link_to "Edit this lembrete", edit_lembrete_path(@lembrete) %> |
+  <%= link_to "Back to lembretes", lembretes_path %>
+
+  <%= button_to "Destroy this lembrete", @lembrete, method: :delete %>
+</div>

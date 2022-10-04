@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Meta</h1>
+
+<div id="meta">
+  <% @meta.each do |metum| %>
+    <%= render metum %>
+    <p>
+      <%= link_to "Show this metum", metum %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New metum", new_metum_path %>
