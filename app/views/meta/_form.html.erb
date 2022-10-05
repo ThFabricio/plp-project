@@ -32,6 +32,11 @@
   </div>
 
   <div>
+    <%= form.label :categoria_id, style: "display: block" %>
+    <%= form.select :categoria_id, options_for_select(Categorium.all.ids) %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -21,7 +21,9 @@ class LembretesController < ApplicationController
 
   # POST /lembretes or /lembretes.json
   def create
+    @categoria = Categoria.find(params[:categoria_id])
     @lembrete = Lembrete.new(lembrete_params)
+    @lembrete.categoria = @categoria
 
     respond_to do |format|
       if @lembrete.save
@@ -65,6 +67,6 @@ class LembretesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lembrete_params
-      params.require(:lembrete).permit(:nome, :descricao, :dia)
+      params.require(:lembrete).permit(:nome, :descricao, :dia, :categoria_id)
     end
 end
