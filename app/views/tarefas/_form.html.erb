@@ -22,18 +22,18 @@
   </div>
 
   <div>
-    <%= form.label :horario, style: "display: block" %>
-    <%= form.time_field :horario %>
+    <%= form.label :horaInicio, style: "display: block" %>
+    <%= form.datetime_field :horaInicio %>
+  </div>
+
+  <div>
+    <%= form.label :horaFim, style: "display: block" %>
+    <%= form.datetime_field :horaFim %>
   </div>
 
   <div>
     <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.label :data, style: "display: block" %>
-    <%= form.date_field :data %>
+    <%= form.check_box :status %>
   </div>
 
   <div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_16_174257) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_144320) do
   create_table "categoria", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
@@ -20,9 +20,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_174257) do
   end
 
   create_table "lembretes", force: :cascade do |t|
+    t.string "nome"
     t.text "descricao"
-    t.date "data"
-    t.time "horario"
+    t.datetime "dia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,9 +44,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_16_174257) do
   create_table "tarefas", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
-    t.time "horario"
-    t.string "status"
-    t.date "data"
+    t.datetime "horaInicio"
+    t.datetime "horaFim"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

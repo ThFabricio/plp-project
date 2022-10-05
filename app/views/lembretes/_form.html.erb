@@ -12,18 +12,18 @@
   <% end %>
 
   <div>
+    <%= form.label :nome, style: "display: block" %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div>
     <%= form.label :descricao, style: "display: block" %>
     <%= form.text_area :descricao %>
   </div>
 
   <div>
-    <%= form.label :data, style: "display: block" %>
-    <%= form.date_field :data %>
-  </div>
-
-  <div>
-    <%= form.label :horario, style: "display: block" %>
-    <%= form.time_field :horario %>
+    <%= form.label :dia, style: "display: block" %>
+    <%= form.datetime_field :dia %>
   </div>
 
   <div>

@@ -17,7 +17,7 @@ class TarefasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tarefa" do
     assert_difference("Tarefa.count") do
-      post tarefas_url, params: { tarefa: { data: @tarefa.data, descricao: @tarefa.descricao, horario: @tarefa.horario, nome: @tarefa.nome, status: @tarefa.status } }
+      post tarefas_url, params: { tarefa: { descricao: @tarefa.descricao, horaFim: @tarefa.horaFim, horaInicio: @tarefa.horaInicio, nome: @tarefa.nome, status: @tarefa.status } }
     end
 
     assert_redirected_to tarefa_url(Tarefa.last)
@@ -34,7 +34,7 @@ class TarefasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tarefa" do
-    patch tarefa_url(@tarefa), params: { tarefa: { data: @tarefa.data, descricao: @tarefa.descricao, horario: @tarefa.horario, nome: @tarefa.nome, status: @tarefa.status } }
+    patch tarefa_url(@tarefa), params: { tarefa: { descricao: @tarefa.descricao, horaFim: @tarefa.horaFim, horaInicio: @tarefa.horaInicio, nome: @tarefa.nome, status: @tarefa.status } }
     assert_redirected_to tarefa_url(@tarefa)
   end
 
