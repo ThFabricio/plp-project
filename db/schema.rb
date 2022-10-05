@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_05_144320) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_170332) do
   create_table "categoria", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
@@ -25,6 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_144320) do
     t.datetime "dia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "categoria_id", null: false
+    t.index ["categoria_id"], name: "index_lembretes_on_categoria_id"
   end
 
   create_table "meta", force: :cascade do |t|
@@ -34,11 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_144320) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "planners", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "categoria_id", null: false
+    t.index ["categoria_id"], name: "index_meta_on_categoria_id"
   end
 
   create_table "tarefas", force: :cascade do |t|
@@ -51,12 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_144320) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "usuarios", force: :cascade do |t|
-    t.string "userName"
-    t.string "email"
-    t.string "senha"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "lembretes", "categoria", column: "categoria_id"
+  add_foreign_key "meta", "categoria", column: "categoria_id"
 end
