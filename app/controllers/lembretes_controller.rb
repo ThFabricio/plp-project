@@ -21,9 +21,7 @@ class LembretesController < ApplicationController
 
   # POST /lembretes or /lembretes.json
   def create
-    @categoria = Categoria.find(params[:categoria_id])
     @lembrete = Lembrete.new(lembrete_params)
-    @lembrete.categoria = @categoria
 
     respond_to do |format|
       if @lembrete.save

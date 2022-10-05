@@ -1,6 +1,5 @@
 class Categorium < ApplicationRecord
-
-  has_many :tarefa
+  has_many :lembretes
   has_many :metum
   validates :nome, presence: true, length: {minimum: 5}
   validates :descricao, presence: true, length: {minimum: 10}

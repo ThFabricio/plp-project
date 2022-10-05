@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= form.label :categoria_id, style: "display: block" %>
+    <%= form.collection_select(:categoria_id, Categorium.all, :id, :nome, :prompt => 'Categoria') %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -23,8 +23,6 @@ class MetaController < ApplicationController
   def create
 
     @metum = Metum.new(metum_params)
-    @categoria = Categorium.find(params[:categoria_id])
-    @metum.categoria << @categoria
 
     respond_to do |format|
       if @metum.save
