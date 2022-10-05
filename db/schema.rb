@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_05_192419) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_222226) do
+  create_table "atividade_categoria", force: :cascade do |t|
+    t.integer "atividade_id", null: false
+    t.integer "categorium_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["atividade_id"], name: "index_atividade_categoria_on_atividade_id"
+    t.index ["categorium_id"], name: "index_atividade_categoria_on_categorium_id"
+  end
+
   create_table "atividades", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
@@ -28,14 +37,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_192419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lembrete_categoria", force: :cascade do |t|
+    t.integer "lembrete_id", null: false
+    t.integer "categorium_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categorium_id"], name: "index_lembrete_categoria_on_categorium_id"
+    t.index ["lembrete_id"], name: "index_lembrete_categoria_on_lembrete_id"
+  end
+
   create_table "lembretes", force: :cascade do |t|
     t.string "nome"
     t.text "descricao"
     t.datetime "dia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "categoria_id", null: false
-    t.index ["categoria_id"], name: "index_lembretes_on_categoria_id"
   end
 
   create_table "meta", force: :cascade do |t|
@@ -45,20 +61,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_192419) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "categoria_id", null: false
-    t.index ["categoria_id"], name: "index_meta_on_categoria_id"
   end
 
-  create_table "tarefas", force: :cascade do |t|
-    t.string "nome"
-    t.text "descricao"
-    t.datetime "horaInicio"
-    t.datetime "horaFim"
-    t.boolean "status"
+  create_table "meta_categoria", force: :cascade do |t|
+    t.integer "metum_id", null: false
+    t.integer "categorium_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["categorium_id"], name: "index_meta_categoria_on_categorium_id"
+    t.index ["metum_id"], name: "index_meta_categoria_on_metum_id"
   end
 
-  add_foreign_key "lembretes", "categoria", column: "categoria_id"
-  add_foreign_key "meta", "categoria", column: "categoria_id"
+  add_foreign_key "atividade_categoria", "atividades"
+  add_foreign_key "atividade_categoria", "categoria"
+  add_foreign_key "lembrete_categoria", "categoria"
+  add_foreign_key "lembrete_categoria", "lembretes"
+  add_foreign_key "meta_categoria", "categoria"
+  add_foreign_key "meta_categoria", "meta"
 end

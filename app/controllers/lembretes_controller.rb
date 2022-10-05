@@ -21,10 +21,17 @@ class LembretesController < ApplicationController
 
   # POST /lembretes or /lembretes.json
   def create
-    @lembrete = Lembrete.new(lembrete_params)
+    @lembrete = Lembrete.new(
+      nome: lembrete_params[:nome],
+      descricao: lembrete_params[:descricao],
+      dia: lembrete_params[:dia]
+    )
 
     respond_to do |format|
       if @lembrete.save
+        if lembrete_params[:categoria_id]
+          LembreteCategorium.create(categorium_id: lembrete_params[:categoria_id], lembrete_id: @lembrete.id)
+        end
         format.html { redirect_to lembrete_url(@lembrete), notice: "Lembrete was successfully created." }
         format.json { render :show, status: :created, location: @lembrete }
       else
@@ -37,7 +44,17 @@ class LembretesController < ApplicationController
   # PATCH/PUT /lembretes/1 or /lembretes/1.json
   def update
     respond_to do |format|
-      if @lembrete.update(lembrete_params)
+      if @lembrete.update(
+        nome: lembrete_params[:nome],
+        descricao: lembrete_params[:descricao],
+        dia: lembrete_params[:dia]
+      )
+        if lembrete_params[:categoria_id]
+          if @lembrete.lembrete_categoriums.all[0]
+            LembreteCategorium.find(@lembrete.lembrete_categoriums.all[0].id).destroy
+          end
+          LembreteCategorium.create(categorium_id: lembrete_params[:categoria_id], lembrete_id: @lembrete.id)
+        end
         format.html { redirect_to lembrete_url(@lembrete), notice: "Lembrete was successfully updated." }
         format.json { render :show, status: :ok, location: @lembrete }
       else

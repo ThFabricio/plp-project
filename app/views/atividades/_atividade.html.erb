@@ -19,4 +19,11 @@
     <%= atividade.end_time %>
   </p>
 
+  <p>
+    <strong>Categoria:</strong>
+    <% atividade.categoriums.all.each do |atividade| %>
+      <%= atividade.nome %>
+    <% end %>
+  </p>
+
 </div>

@@ -19,4 +19,11 @@
     <%= metum.status %>
   </p>
 
+  <p>
+    <strong>Categoria:</strong>
+    <% metum.categoriums.all.each do |categoria| %>
+      <%= categoria.nome %>
+    <% end %>
+  </p>
+
 </div>
