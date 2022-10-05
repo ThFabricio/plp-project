@@ -21,7 +21,10 @@ class MetaController < ApplicationController
 
   # POST /meta or /meta.json
   def create
+
     @metum = Metum.new(metum_params)
+    @categoria = Categorium.find(params[:categoria_id])
+    @metum.categoria << @categoria
 
     respond_to do |format|
       if @metum.save
@@ -65,6 +68,6 @@ class MetaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metum_params
-      params.require(:metum).permit(:nome, :descricao, :frequencia, :status)
+      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id)
     end
 end
