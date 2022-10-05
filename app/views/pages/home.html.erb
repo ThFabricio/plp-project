@@ -1,0 +1,16 @@
+<div class="container mt-5 text-center">
+  <h1>Pages#home</h1>
+  <p>Find me in app/views/pages/home.html.erb</p>
+
+  <%= month_calendar(events: @atividades) do |date, atividades|%>
+    <div class="day">
+      <%= date.day %>
+    </div>
+
+    <% atividades.each do |atividade| %>
+        <div class="card-title my-1 py-3" style="background-color: deeppink; border-radius: 0.5rem">
+          <%= link_to atividade.nome, atividade %>
+        </div>
+    <% end %>
+  <% end %>
+</div>

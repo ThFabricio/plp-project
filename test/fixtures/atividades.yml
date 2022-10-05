@@ -3,13 +3,11 @@
 one:
   nome: MyString
   descricao: MyText
-  horaInicio: 2022-10-05 11:37:33
-  horaFim: 2022-10-05 11:37:33
-  status: false
+  start_time: 2022-10-05 16:24:19
+  end_time: 2022-10-05 16:24:19
 
 two:
   nome: MyString
   descricao: MyText
-  horaInicio: 2022-10-05 11:37:33
-  horaFim: 2022-10-05 11:37:33
-  status: false
+  start_time: 2022-10-05 16:24:19
+  end_time: 2022-10-05 16:24:19
