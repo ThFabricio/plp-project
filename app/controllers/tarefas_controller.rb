@@ -65,6 +65,6 @@ class TarefasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tarefa_params
-      params.require(:tarefa).permit(:nome, :descricao, :horario, :status, :data)
+      params.require(:tarefa).permit(:nome, :descricao, :horaInicio, :horaFim, :status)
     end
 end

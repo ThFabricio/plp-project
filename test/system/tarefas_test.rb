@@ -14,11 +14,11 @@ class TarefasTest < ApplicationSystemTestCase
     visit tarefas_url
     click_on "New tarefa"
 
-    fill_in "Data", with: @tarefa.data
     fill_in "Descricao", with: @tarefa.descricao
-    fill_in "Horario", with: @tarefa.horario
+    fill_in "Horafim", with: @tarefa.horaFim
+    fill_in "Horainicio", with: @tarefa.horaInicio
     fill_in "Nome", with: @tarefa.nome
-    fill_in "Status", with: @tarefa.status
+    check "Status" if @tarefa.status
     click_on "Create Tarefa"
 
     assert_text "Tarefa was successfully created"
@@ -29,11 +29,11 @@ class TarefasTest < ApplicationSystemTestCase
     visit tarefa_url(@tarefa)
     click_on "Edit this tarefa", match: :first
 
-    fill_in "Data", with: @tarefa.data
     fill_in "Descricao", with: @tarefa.descricao
-    fill_in "Horario", with: @tarefa.horario
+    fill_in "Horafim", with: @tarefa.horaFim
+    fill_in "Horainicio", with: @tarefa.horaInicio
     fill_in "Nome", with: @tarefa.nome
-    fill_in "Status", with: @tarefa.status
+    check "Status" if @tarefa.status
     click_on "Update Tarefa"
 
     assert_text "Tarefa was successfully updated"

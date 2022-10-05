@@ -1,2 +1,2 @@
-json.extract! tarefa, :id, :nome, :descricao, :horario, :status, :data, :created_at, :updated_at
+json.extract! tarefa, :id, :nome, :descricao, :horaInicio, :horaFim, :status, :created_at, :updated_at
 json.url tarefa_url(tarefa, format: :json)

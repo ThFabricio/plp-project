@@ -17,7 +17,7 @@ class LembretesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create lembrete" do
     assert_difference("Lembrete.count") do
-      post lembretes_url, params: { lembrete: { data: @lembrete.data, descricao: @lembrete.descricao, horario: @lembrete.horario } }
+      post lembretes_url, params: { lembrete: { descricao: @lembrete.descricao, dia: @lembrete.dia, nome: @lembrete.nome } }
     end
 
     assert_redirected_to lembrete_url(Lembrete.last)
@@ -34,7 +34,7 @@ class LembretesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update lembrete" do
-    patch lembrete_url(@lembrete), params: { lembrete: { data: @lembrete.data, descricao: @lembrete.descricao, horario: @lembrete.horario } }
+    patch lembrete_url(@lembrete), params: { lembrete: { descricao: @lembrete.descricao, dia: @lembrete.dia, nome: @lembrete.nome } }
     assert_redirected_to lembrete_url(@lembrete)
   end
 

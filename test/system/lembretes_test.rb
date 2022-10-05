@@ -14,9 +14,9 @@ class LembretesTest < ApplicationSystemTestCase
     visit lembretes_url
     click_on "New lembrete"
 
-    fill_in "Data", with: @lembrete.data
     fill_in "Descricao", with: @lembrete.descricao
-    fill_in "Horario", with: @lembrete.horario
+    fill_in "Dia", with: @lembrete.dia
+    fill_in "Nome", with: @lembrete.nome
     click_on "Create Lembrete"
 
     assert_text "Lembrete was successfully created"
@@ -27,9 +27,9 @@ class LembretesTest < ApplicationSystemTestCase
     visit lembrete_url(@lembrete)
     click_on "Edit this lembrete", match: :first
 
-    fill_in "Data", with: @lembrete.data
     fill_in "Descricao", with: @lembrete.descricao
-    fill_in "Horario", with: @lembrete.horario
+    fill_in "Dia", with: @lembrete.dia
+    fill_in "Nome", with: @lembrete.nome
     click_on "Update Lembrete"
 
     assert_text "Lembrete was successfully updated"
