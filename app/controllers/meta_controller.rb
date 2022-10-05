@@ -21,11 +21,18 @@ class MetaController < ApplicationController
 
   # POST /meta or /meta.json
   def create
-
-    @metum = Metum.new(metum_params)
+    @metum = Metum.new(
+      nome: metum_params[:nome],
+      descricao: metum_params[:descricao],
+      frequencia: metum_params[:frequencia],
+      status: metum_params[:status]
+    )
 
     respond_to do |format|
       if @metum.save
+        if metum_params[:categoria_id]
+          MetaCategorium.create(categorium_id: metum_params[:categoria_id], metum_id: @metum.id)
+        end
         format.html { redirect_to metum_url(@metum), notice: "Metum was successfully created." }
         format.json { render :show, status: :created, location: @metum }
       else
@@ -38,7 +45,18 @@ class MetaController < ApplicationController
   # PATCH/PUT /meta/1 or /meta/1.json
   def update
     respond_to do |format|
-      if @metum.update(metum_params)
+      if @metum.update(
+        nome: metum_params[:nome],
+        descricao: metum_params[:descricao],
+        frequencia: metum_params[:frequencia],
+        status: metum_params[:status]
+      )
+        if metum_params[:categoria_id]
+          if @metum.meta_categoriums.all[0]
+            MetaCategorium.find(@metum.meta_categoriums.all[0].id).destroy
+          end
+          MetaCategorium.create(categorium_id: metum_params[:categoria_id], metum_id: @metum.id)
+        end
         format.html { redirect_to metum_url(@metum), notice: "Metum was successfully updated." }
         format.json { render :show, status: :ok, location: @metum }
       else

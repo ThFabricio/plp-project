@@ -21,10 +21,18 @@ class AtividadesController < ApplicationController
 
   # POST /atividades or /atividades.json
   def create
-    @atividade = Atividade.new(atividade_params)
+    @atividade = Atividade.new(
+      nome: atividade_params[:nome],
+      descricao: atividade_params[:descricao],
+      start_time: atividade_params[:start_time],
+      end_time: atividade_params[:end_time]
+    )
 
     respond_to do |format|
       if @atividade.save
+        if atividade_params[:categoria_id]
+          AtividadeCategorium.create(categorium_id: atividade_params[:categoria_id], atividade_id: @atividade.id)
+        end
         format.html { redirect_to atividade_url(@atividade), notice: "Atividade was successfully created." }
         format.json { render :show, status: :created, location: @atividade }
       else
@@ -37,7 +45,18 @@ class AtividadesController < ApplicationController
   # PATCH/PUT /atividades/1 or /atividades/1.json
   def update
     respond_to do |format|
-      if @atividade.update(atividade_params)
+      if @atividade.update(
+        nome: atividade_params[:nome],
+        descricao: atividade_params[:descricao],
+        start_time: atividade_params[:start_time],
+        end_time: atividade_params[:end_time]
+      )
+        if atividade_params[:categoria_id]
+          if @atividade.atividade_categoriums.all[0]
+            AtividadeCategorium.find(@atividade.atividade_categoriums.all[0].id).destroy
+          end
+          AtividadeCategorium.create(categorium_id: atividade_params[:categoria_id], atividade_id: @atividade.id)
+        end
         format.html { redirect_to atividade_url(@atividade), notice: "Atividade was successfully updated." }
         format.json { render :show, status: :ok, location: @atividade }
       else
@@ -65,6 +84,6 @@ class AtividadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atividade_params
-      params.require(:atividade).permit(:nome, :descricao, :start_time, :end_time)
+      params.require(:atividade).permit(:nome, :descricao, :start_time, :end_time, :categoria_id)
     end
 end

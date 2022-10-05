@@ -14,4 +14,11 @@
     <%= lembrete.dia %>
   </p>
 
+  <p>
+    <strong>Categoria:</strong>
+    <% lembrete.categoriums.all.each do |categoria| %>
+      <%= categoria.nome %>
+    <% end %>
+  </p>
+
 </div>
