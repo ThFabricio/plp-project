@@ -35,11 +35,11 @@ class AtividadesController < ApplicationController
         @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 6, 0, 0)
         @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 12, 00, 00)
       elsif atividade_params[:bloco] == "Tarde"
-        @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 13, 0, 0)
+        @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 12, 0, 0)
         @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 18, 0, 0)
       elsif atividade_params[:bloco] == "Noite"
         @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 18, 0, 0)
-        @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 00, 0, 0)
+        @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 23, 59, 59)
       elsif atividade_params[:bloco] == "Madrugada"
         @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 00, 0, 0)
         @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 6, 0, 0)
@@ -79,7 +79,7 @@ class AtividadesController < ApplicationController
             @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 18, 0, 0)
           elsif atividade_params[:bloco] == "Noite"
             @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 18, 0, 0)
-            @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 00, 0, 0)
+            @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 23, 00, 00)
           elsif atividade_params[:bloco] == "Madrugada"
             @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 00, 0, 0)
             @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 6, 0, 0)
