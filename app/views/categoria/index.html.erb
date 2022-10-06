@@ -1,14 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Categoria</h1>
+<div id="categorias" class="container mt-5">
 
-<div id="categoria">
-  <% @categoria.each do |categorium| %>
-    <%= render categorium %>
-    <p>
-      <%= link_to "Show this categorium", categorium %>
-    </p>
-  <% end %>
+  <div class="col-md-10 ms-5">
+    <div class="row justify-content-between" style="border-bottom: 2px solid #989898">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-1 px-0">
+            <%= link_to image_tag("/images/navigate_before.svg", width: 50), "/", class: "alinhamento" %>
+          </div>
+          <div class="col-md-11">
+            <h1 class="px-0 alinhamento">Todas as Categorias</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <%= link_to image_tag("/images/add_circle.svg", width: 50), new_categorium_path, class: "alinhamento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="categoria" class="row ms-5">
+      <% @categoria.each do |categorium| %>
+        <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white; background-color: <%= categorium.cor %>;border-radius: 0.5rem">
+          <%= render categorium %>
+          <p>
+            <%= link_to "Visualizar", categorium, class:"link_atividade" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 </div>
-
-<%= link_to "New categorium", new_categorium_path %>
