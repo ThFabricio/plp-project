@@ -3,7 +3,8 @@
 
 .day {
     min-height: 4rem;
-    max-width: 2rem;
+    max-width: 3rem;
+    word-wrap: break-word
 }
 
 .wday-0 {}
@@ -55,7 +56,6 @@
 
 .link_atividade:hover{
     color: white;
-    font-weight: 600;
     text-decoration: none;
 }
 

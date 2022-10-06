@@ -49,6 +49,15 @@ class CategoriaController < ApplicationController
 
   # DELETE /categoria/1 or /categoria/1.json
   def destroy
+    if @categorium.meta_categoriums.all[0]
+      MetaCategorium.find(@categorium.meta_categoriums.all[0].id).destroy
+    end
+    if @categorium.lembrete_categoriums.all[0]
+      LembreteCategorium.find(@categorium.lembrete_categoriums.all[0].id).destroy
+    end
+    if @categorium.atividade_categoriums.all[0]
+      AtividadeCategorium.find(@categorium.atividade_categoriums.all[0].id).destroy
+    end
     @categorium.destroy
 
     respond_to do |format|
