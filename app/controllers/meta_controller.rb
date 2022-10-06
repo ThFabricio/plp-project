@@ -85,7 +85,11 @@ class MetaController < ApplicationController
 
   # DELETE /meta/1 or /meta/1.json
   def destroy
-    @metum.destroy
+
+    if @metum.meta_categoriums.all[0]
+      MetaCategorium.find(@metum.meta_categoriums.all[0].id).destroy
+      @metum.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to meta_url, notice: "Metum was successfully destroyed." }
