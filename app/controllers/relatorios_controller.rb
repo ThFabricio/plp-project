@@ -14,7 +14,7 @@ class RelatoriosController < ApplicationController
   def relatorio3
     conn = ActiveRecord::Base.connection
 
-    @result = conn.execute "SELECT * FROM atividades"
+    @result = conn.execute "SELECT count(*) FROM atividades GROUP BY start_time"
   end
 
   def relatorio4
