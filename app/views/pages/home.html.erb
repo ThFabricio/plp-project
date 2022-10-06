@@ -1,16 +1,92 @@
-<div class="container mt-5 text-center">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-fluid">
+  <div class="row justify-content-between">
+    <div class="col-md-2 py-5 px-3 shadow" style="background-color: white">
+      <div class="mb-5" style="text-align: center">
+        <a href="/atividades/new">
+          <button type="button" class="btn btn-lg btn-block" style="background-color: #D94339; color: white; font-weight: 600">
+            Nova Atividade
+          </button>
+        </a>
+      </div>
+      <div class="my-4">
+        <div class="dropdown text-left" style="border-bottom: 2px solid #D94339">
+          <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/star.svg" alt="">
+            <span class="px-2" style="font-size: 1.2rem; font-weight: 500; color: #D94339; vertical-align: middle">Metas</span>
+          </a>
 
-  <%= month_calendar(events: @atividades) do |date, atividades|%>
-    <div class="day">
-      <%= date.day %>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="/meta/new">Nova Meta</a></li>
+            <li><a class="dropdown-item" href="/meta">Todas as Metas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="my-4">
+        <div class="dropdown text-left" style="border-bottom: 2px solid #D94339">
+          <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/apps.svg" alt="">
+            <span class="px-2" style="font-size: 1.2rem; font-weight: 500; color: #D94339; vertical-align: middle">Categorias</span>
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="/categoria/new">Nova Categoria</a></li>
+            <li><a class="dropdown-item" href="/categoria">Todas as Categorias</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="my-4">
+        <div class="dropdown text-left" style="border-bottom: 2px solid #D94339">
+          <a class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/insights.svg" alt="">
+            <span class="px-2" style="font-size: 1.2rem; font-weight: 500; color: #D94339; vertical-align: middle">Relatório</span>
+          </a>
+        </div>
+      </div>
+      <div class="my-4">
+        <div class="dropdown text-left" style="border-bottom: 2px solid #D94339">
+          <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/Vector.svg" alt="">
+            <span class="px-2" style="font-size: 1.2rem; font-weight: 500; color: #D94339; vertical-align: middle">Lembretes</span>
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="/lembretes/new">Novo Lembrete</a></li>
+            <li><a class="dropdown-item" href="/lembretes">Todos os Lembretes</a></li>
+          </ul>
+        </div>
+
+        <div class="mt-4">
+          <div id="lembretes" class="p-3" style="background-color: grey; border-radius: 0.5rem">
+            <% @lembretes.each do |lembrete| %>
+              <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
+                <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
+                <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+                  <%= lembrete.dia.strftime('%d/%m/%y - %H:%M') %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <% atividades.each do |atividade| %>
-        <div class="card-title my-1 py-3" style="background-color: deeppink; border-radius: 0.5rem">
-          <%= link_to atividade.nome, atividade %>
+    <div class="col-md-10 px-0 table-striped">
+      <%= month_calendar(events: @atividades) do |date, atividades|%>
+        <div class="day">
+          <%= date.day %>
         </div>
-    <% end %>
-  <% end %>
+
+        <% atividades.each do |atividade| %>
+          <div class="card-title py-2 text-center" style="background-color: grey; border-radius: 0.5rem">
+            <%= link_to atividade.nome, atividade, class: "link_atividade"%>
+            <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+              <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
