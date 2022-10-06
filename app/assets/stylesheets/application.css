@@ -52,3 +52,9 @@
     color: white;
     text-decoration: none;
 }
+
+.link_atividade:hover{
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}

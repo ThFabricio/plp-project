@@ -68,7 +68,11 @@ class AtividadesController < ApplicationController
 
   # DELETE /atividades/1 or /atividades/1.json
   def destroy
-    @atividade.destroy
+
+    if @atividade.atividade_categoriums.all[0]
+      AtividadeCategorium.find(@atividade.atividade_categoriums.all[0].id).destroy
+      @atividade.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to atividades_url, notice: "Atividade was successfully destroyed." }
