@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_05_222226) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_06_024918) do
   create_table "atividade_categoria", force: :cascade do |t|
     t.integer "atividade_id", null: false
     t.integer "categorium_id", null: false
@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_222226) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "meta_categoria", force: :cascade do |t|
