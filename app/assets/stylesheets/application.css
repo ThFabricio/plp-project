@@ -1,15 +1,53 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.simple-calendar {
+}
+
+.day {
+    min-height: 4rem;
+}
+
+.wday-0 {}
+.wday-1 {}
+.wday-2 {}
+.wday-3 {}
+.wday-4 {}
+.wday-5 {}
+.wday-6 {}
+
+.today {
+    color: deeppink;
+}
+
+.past {
+    color: #CCCCCC;
+}
+.future {}
+
+.start-date {}
+
+.prev-month {
+    color: #DDD;
+}
+.next-month {
+    color: #DDD;
+}
+.current-month {
+    color: #D94339;
+}
+
+.has-events {}
+
+
+.calendar-title{
+    color: #373234;
+    font-size: 1.9rem;
+    font-weight: 600;
+}
+
+.alinhamento{
+    vertical-align: middle;
+}
+
+.link_atividade{
+    color: white;
+    text-decoration: none;
+}
