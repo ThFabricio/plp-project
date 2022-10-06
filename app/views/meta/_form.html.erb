@@ -37,6 +37,16 @@
   </div>
 
   <div>
+    <%= form.label :opcao, style: "display: block" %>
+    <%= form.select :opcao, ["Semana", "Mes", "Ano"] %>
+  </div>
+
+  <div>
+    <%= form.label :valor, style: "display: block" %>
+    <%= form.number_field :valor %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
