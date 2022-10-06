@@ -61,8 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_024918) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.date "start_time"
+    t.date "end_time"
   end
 
   create_table "meta_categoria", force: :cascade do |t|
