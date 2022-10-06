@@ -28,6 +28,23 @@ class MetaController < ApplicationController
       status: metum_params[:status]
     )
 
+    if metum_params[:opcao] == "Semana"
+      @data = Time.now
+      @metum.start_time= @data
+      @metum.end_time = @data + metum_params[:valor].to_i.weeks
+
+
+    elsif metum_params[:opcao] == "Mês"
+      @data = Time.now
+      @metum.start_time= @data
+      @metum.end_time = @data + metum_params[:valor].to_i.months
+
+    elsif metum_params[:opcao] == "Ano"
+      @data = Time.now
+      @metum.start_time= @data
+      @metum.end_time = @data + metum_params[:valor].to_i.years
+    end
+
     respond_to do |format|
       if @metum.save
         if metum_params[:categoria_id]
@@ -84,6 +101,6 @@ class MetaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metum_params
-      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id)
+      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id, :opcao, :valor)
     end
 end
