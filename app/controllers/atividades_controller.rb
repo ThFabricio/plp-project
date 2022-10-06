@@ -70,6 +70,21 @@ class AtividadesController < ApplicationController
         end_time: atividade_params[:end_time],
         status: atividade_params[:status]
       )
+        if @atividade.start_time == nil
+          if atividade_params[:bloco] == "Manhã"
+            @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 6, 0, 0)
+            @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 12, 00, 00)
+          elsif atividade_params[:bloco] == "Tarde"
+            @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 13, 0, 0)
+            @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 18, 0, 0)
+          elsif atividade_params[:bloco] == "Noite"
+            @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 18, 0, 0)
+            @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 00, 0, 0)
+          elsif atividade_params[:bloco] == "Madrugada"
+            @atividade.start_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 00, 0, 0)
+            @atividade.end_time = DateTime.new(atividade_params[:date].to_date.year, atividade_params[:date].to_date.month, atividade_params[:date].to_date.day, 6, 0, 0)
+          end
+        end
         if atividade_params[:categoria_id]
           if @atividade.atividade_categoriums.all[0]
             AtividadeCategorium.find(@atividade.atividade_categoriums.all[0].id).destroy
