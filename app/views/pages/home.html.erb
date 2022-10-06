@@ -101,6 +101,7 @@
                 <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
               </div>
             </div>
+
           <% else %>
             <div class="py-2 px-2 text-center my-2" style="background-color: grey; border-radius: 0.5rem">
               <% if atividade.status == 'Concluída' %>

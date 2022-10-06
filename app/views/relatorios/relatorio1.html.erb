@@ -1,10 +1,16 @@
-<h1>Quantidade e porcentagem de metas cumpridas</h1>
+<div class="container my-5">
 
-<% if @metas.length > 0%>
+  <h1>Quantidade e porcentagem de metas cumpridas</h1>
 
-  <p>Quantidade: <%= @metas_concluidas.length %></p>
-  <p>Porcentagem: <%= @metas_concluidas.length * 100 / @metas.length %>%</p>
+  <div class="mt-4">
+    <% if @metas.length > 0%>
 
-<% else %>
-  <p>Você ainda não possuí nenhuma meta cadastrada</p>
-<% end %>
+      <p>Quantidade: <%= @metas_concluidas.length %></p>
+      <p>Porcentagem: <%= @metas_concluidas.length * 100 / @metas.length %>%</p>
+
+    <% else %>
+      <p>Você ainda não possuí nenhuma meta cadastrada</p>
+    <% end %>
+  </div>
+
+</div>
