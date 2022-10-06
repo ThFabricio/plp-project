@@ -1,10 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @lembrete %>
+<div id="showLembrete" class="container flex-box my-5 justify-content-center">
 
-<div>
-  <%= link_to "Edit this lembrete", edit_lembrete_path(@lembrete) %> |
-  <%= link_to "Back to lembretes", lembretes_path %>
+  <div class="col-md-6 px-4 py-4" style="background-color: white; border-radius: 0.5rem; border: 2px solid grey">
+    <div class="row mb-4 justify-content-between" style="border-bottom: 1px solid grey">
+      <div class="col-md-6">
+        <div class="row">
+          <span class="me-5 px-0" style="color: #c72b2b; font-size: 1.6rem; font-weight: 600">
+        <%= link_to image_tag("/images/navigate_before.svg", width: 45), lembretes_path, class: "alinhamento"  %>
+            <span class="alinhamento px-0">Lembrete - <%= @lembrete.id %></span>
+        </span>
+        </div>
+      </div>
+      <div class="col-md-6" style="padding-left: 170px">
+        <div class="row pe-5 alinhamento">
+          <div class="col-md-2 mx-1 alinhamento">
+            <%= link_to image_tag("/images/edit.svg", width: 28), edit_lembrete_path(@lembrete), class:"btn"%>
+          </div>
+          <div class="col-md-2 alinhamento">
+            <%= button_to image_tag("/images/delete.svg", width: 28), @lembrete, method: :delete, class:"btn"%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render @lembrete %>
+  </div>
 
-  <%= button_to "Destroy this lembrete", @lembrete, method: :delete %>
 </div>

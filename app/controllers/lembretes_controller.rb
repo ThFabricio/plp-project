@@ -32,7 +32,7 @@ class LembretesController < ApplicationController
         if lembrete_params[:categoria_id]
           LembreteCategorium.create(categorium_id: lembrete_params[:categoria_id], lembrete_id: @lembrete.id)
         end
-        format.html { redirect_to lembrete_url(@lembrete), notice: "Lembrete was successfully created." }
+        format.html { redirect_to "/lembretes", notice: "Lembrete was successfully created." }
         format.json { render :show, status: :created, location: @lembrete }
       else
         format.html { render :new, status: :unprocessable_entity }

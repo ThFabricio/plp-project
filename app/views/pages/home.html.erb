@@ -57,9 +57,8 @@
 
         <div class="mt-4">
             <% @lembretes.each do |lembrete| %>
-
               <% if lembrete.categoriums.all[0] != nil %>
-                <div id="lembretes" class="p-3 mt-3" style="background-color: <%=lembrete.categoriums.all[0].cor %>>; border-radius: 0.5rem">
+                <div id="lembretes" class="p-3 mt-3" style="background-color: <%=lembrete.categoriums.all[0].cor %>; border-radius: 0.5rem">
                   <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
                     <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
                     <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">

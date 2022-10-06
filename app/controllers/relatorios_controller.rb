@@ -12,7 +12,9 @@ class RelatoriosController < ApplicationController
   end
 
   def relatorio3
-    # Destacar as semanas e meses mais produtivos
+    conn = ActiveRecord::Base.connection
+
+    @result = conn.execute "SELECT * FROM atividades"
   end
 
   def relatorio4
