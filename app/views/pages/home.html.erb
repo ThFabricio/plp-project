@@ -93,7 +93,7 @@
           <% if atividade.categoriums.all[0] != nil %>
             <div id="atividadeCor" class="py-2 text-center my-2" style="background-color: <%=atividade.categoriums.all[0].cor%>; border-radius: 0.5rem">
               <% if atividade.status == 'Concluída' %>
-                <s><%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%></s>
+                <s style="color:white"><%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%></s>
               <% else %>
                 <%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%>
               <% end %>
