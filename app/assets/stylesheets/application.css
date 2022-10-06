@@ -3,6 +3,7 @@
 
 .day {
     min-height: 4rem;
+    max-width: 2rem;
 }
 
 .wday-0 {}
