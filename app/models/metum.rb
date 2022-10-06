@@ -8,5 +8,5 @@ class Metum < ApplicationRecord
   validates :frequencia, presence: true
   validates :start_time, presence: true, comparison: {greater_than: Date.today}, uniqueness: true
   validates :end_time, presence: true, comparison: {greater_than: :start_time}, uniqueness: true
-  
+
 end
