@@ -64,11 +64,11 @@ class RelatoriosController < ApplicationController
     def pegar_atividades_concluidas
       atividades = Atividade.all
       atividades_concluidas = []
-      # atividades.each do |atividade|
-      #   if atividade.status == "Concluída"
-      #     atividades_concluidas << atividade
-      #   end
-      # end
+       atividades.each do |atividade|
+         if atividade.status == "Concluída"
+           atividades_concluidas << atividade
+         end
+       end
 
       [atividades, atividades_concluidas]
     end

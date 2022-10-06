@@ -25,7 +25,8 @@ class AtividadesController < ApplicationController
       nome: atividade_params[:nome],
       descricao: atividade_params[:descricao],
       start_time: atividade_params[:start_time],
-      end_time: atividade_params[:end_time]
+      end_time: atividade_params[:end_time],
+      status: atividade_params[:status]
     )
 
     respond_to do |format|
@@ -49,7 +50,8 @@ class AtividadesController < ApplicationController
         nome: atividade_params[:nome],
         descricao: atividade_params[:descricao],
         start_time: atividade_params[:start_time],
-        end_time: atividade_params[:end_time]
+        end_time: atividade_params[:end_time],
+        status: atividade_params[:status]
       )
         if atividade_params[:categoria_id]
           if @atividade.atividade_categoriums.all[0]
@@ -88,6 +90,6 @@ class AtividadesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atividade_params
-      params.require(:atividade).permit(:nome, :descricao, :start_time, :end_time, :categoria_id)
+      params.require(:atividade).permit(:nome, :descricao, :start_time, :end_time, :categoria_id, :status)
     end
 end
