@@ -1,10 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @atividade %>
+<div id="showAtividade" class="container flex-box my-5 justify-content-center">
 
-<div>
-  <%= link_to "Edit this atividade", edit_atividade_path(@atividade) %> |
-  <%= link_to "Back to atividades", atividades_path %>
+  <div class="col-md-6 px-4 py-4" style="background-color: white; border-radius: 0.5rem; border: 2px solid grey">
+    <div class="row mb-4 justify-content-between" style="border-bottom: 1px solid grey">
+      <div class="col-md-6">
+        <div class="row">
+          <span class="me-5 px-0" style="color: #c72b2b; font-size: 1.6rem; font-weight: 600">
+        <%= link_to image_tag("/images/navigate_before.svg", width: 45), "/", class: "alinhamento"  %>
+            <span class="alinhamento px-0">Atividade - <%= @atividade.id %></span>
+        </span>
+        </div>
+      </div>
+      <div class="col-md-6" style="padding-left: 170px">
+        <div class="row pe-5 alinhamento">
+          <div class="col-md-2 mx-1 alinhamento">
+            <%= link_to image_tag("/images/edit.svg", width: 28), edit_atividade_path(@atividade), class:"btn"%>
+          </div>
+          <div class="col-md-2 alinhamento">
+            <%= button_to image_tag("/images/delete.svg", width: 28), @atividade, method: :delete, class:"btn"%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render @atividade %>
+  </div>
 
-  <%= button_to "Destroy this atividade", @atividade, method: :delete %>
 </div>

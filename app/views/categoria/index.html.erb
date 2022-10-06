@@ -21,7 +21,7 @@
   </div>
 
   <div class="row">
-    <div id="categoria" class="row ms-5">
+    <div id="categoria" class="row ms-5" style="word-wrap: break-word">
       <% @categoria.each do |categorium| %>
         <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white; background-color: <%= categorium.cor %>;border-radius: 0.5rem">
           <%= render categorium %>
