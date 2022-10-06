@@ -33,7 +33,7 @@ class AtividadesController < ApplicationController
         if atividade_params[:categoria_id]
           AtividadeCategorium.create(categorium_id: atividade_params[:categoria_id], atividade_id: @atividade.id)
         end
-        format.html { redirect_to atividade_url(@atividade), notice: "Atividade was successfully created." }
+        format.html { redirect_to "/", notice: "Atividade was successfully created." }
         format.json { render :show, status: :created, location: @atividade }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -71,8 +71,8 @@ class AtividadesController < ApplicationController
 
     if @atividade.atividade_categoriums.all[0]
       AtividadeCategorium.find(@atividade.atividade_categoriums.all[0].id).destroy
-      @atividade.destroy
     end
+    @atividade.destroy
 
     respond_to do |format|
       format.html { redirect_to atividades_url, notice: "Atividade was successfully destroyed." }

@@ -50,7 +50,7 @@ class MetaController < ApplicationController
         if metum_params[:categoria_id]
           MetaCategorium.create(categorium_id: metum_params[:categoria_id], metum_id: @metum.id)
         end
-        format.html { redirect_to metum_url(@metum), notice: "Metum was successfully created." }
+        format.html { redirect_to "/meta", notice: "Metum was successfully created." }
         format.json { render :show, status: :created, location: @metum }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -88,8 +88,9 @@ class MetaController < ApplicationController
 
     if @metum.meta_categoriums.all[0]
       MetaCategorium.find(@metum.meta_categoriums.all[0].id).destroy
-      @metum.destroy
     end
+    @metum.destroy
+
 
     respond_to do |format|
       format.html { redirect_to meta_url, notice: "Metum was successfully destroyed." }

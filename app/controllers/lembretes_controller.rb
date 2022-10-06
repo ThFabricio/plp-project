@@ -69,8 +69,8 @@ class LembretesController < ApplicationController
 
       if @lembrete.lembrete_categoriums.all[0]
         LembreteCategorium.find(@lembrete.lembrete_categoriums.all[0].id).destroy
-        @lembrete.destroy
       end
+      @lembrete.destroy
 
     respond_to do |format|
       format.html { redirect_to lembretes_url, notice: "Lembrete was successfully destroyed." }

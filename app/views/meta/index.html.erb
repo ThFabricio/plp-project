@@ -1,14 +1,50 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Meta</h1>
+<div id="metas" class="container mt-5">
 
-<div id="meta">
-  <% @meta.each do |metum| %>
-    <%= render metum %>
-    <p>
-      <%= link_to "Show this metum", metum %>
-    </p>
-  <% end %>
+  <div class="col-md-10 ms-5">
+    <div class="row justify-content-between" style="border-bottom: 2px solid #989898">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-1 px-0">
+            <%= link_to image_tag("/images/navigate_before.svg", width: 50), "/", class: "alinhamento" %>
+          </div>
+          <div class="col-md-11">
+            <h1 class="px-0 alinhamento">Todas as Metas</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <%= link_to image_tag("/images/add_circle.svg", width: 50), new_metum_path, class: "alinhamento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="metas" class="row ms-5">
+      <% @meta.each do |metum| %>
+        <% if metum.categoriums.all[0] != nil %>
+
+          <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white;background-color: <%= metum.categoriums.all[0].cor %>; border-radius: 0.5rem">
+            <%= render metum %>
+            <p>
+              <%= link_to "Visualizar", metum, class:"link_atividade" %>
+            </p>
+          </div>
+
+        <% else %>
+
+          <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white;background-color: grey; border-radius: 0.5rem">
+            <%= render metum %>
+            <p>
+              <%= link_to "Visualizar", metum, class:"link_atividade" %>
+            </p>
+          </div>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
 
-<%= link_to "New metum", new_metum_path %>
