@@ -28,24 +28,13 @@
 
   <div>
     <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.select :status, ["Não começado", "Em andamento", "Concluída"] %>
   </div>
 
   <div>
     <%= form.label :categoria_id, style: "display: block" %>
     <%= form.collection_select(:categoria_id, Categorium.all, :id, :nome, :prompt => 'Categoria') %>
   </div>
-
-  <div>
-    <%= form.label :opcao, style: "display: block" %>
-    <%= form.select :opcao, ["Semana", "Mes", "Ano"] %>
-  </div>
-
-  <div>
-    <%= form.label :valor, style: "display: block" %>
-    <%= form.number_field :valor %>
-  </div>
-
   <div>
     <%= form.submit %>
   </div>

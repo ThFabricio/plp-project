@@ -66,7 +66,7 @@ class MetaController < ApplicationController
         nome: metum_params[:nome],
         descricao: metum_params[:descricao],
         frequencia: metum_params[:frequencia],
-        status: metum_params[:status]
+        status: metum_params[:status],
       )
         if metum_params[:categoria_id]
           if @metum.meta_categoriums.all[0]
@@ -106,6 +106,6 @@ class MetaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metum_params
-      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id, :opcao, :valor)
+      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id)
     end
 end

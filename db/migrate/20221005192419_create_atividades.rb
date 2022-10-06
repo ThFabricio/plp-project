@@ -5,6 +5,7 @@ class CreateAtividades < ActiveRecord::Migration[7.0]
       t.text :descricao
       t.datetime :start_time
       t.datetime :end_time
+      t.string :status
 
       t.timestamps
     end
