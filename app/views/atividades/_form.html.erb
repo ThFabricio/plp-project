@@ -31,17 +31,13 @@
 
   <div id="bloco" class="campoHora" style="display: none">
     <div class="col-md-2">
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Horário</option>
-        <option value="1">Manhã</option>
-        <option value="2">Tarde</option>
-        <option value="2">Noite</option>
-        <option value="2">Madrugada</option>
-      </select>
+      <%= form.label :bloco, style:"display: block" %>
+      <%= form.select :bloco, ["Manhã", "Tarde", "Noite", "Madrugada"] %>
     </div>
 
     <div>
-      <input id="date" type="date">
+      <%= form.label :date, style: "display: block" %>
+      <%= form.date_field :date %>
     </div>
   </div>
 
