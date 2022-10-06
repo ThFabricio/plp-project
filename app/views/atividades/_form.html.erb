@@ -11,17 +11,25 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+  <div class="col-md-12 my-3">
+    <div class="col-md-12">
+      <%= form.label :nome, class: "col-mdm-12" %>
+    </div>
+    <div class="col-md-12">
+      <%= form.text_field :nome, class: "col-mdm-12 input", style:"background-color: #f5f5f5; border-radius: 0.5rem; border:none"  %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :descricao, style: "display: block" %>
-    <%= form.text_area :descricao %>
+  <div class="col-md-12 my-3">
+    <div class="col-md-12">
+      <%= form.label :descricao, class: "col-mdm-12" %>
+    </div>
+    <div class="col-md-12">
+      <%= form.text_area :descricao, class: "col-mdm-12 input", style:"background-color: #f5f5f5; border-radius: 0.5rem; border:none"  %>
+    </div>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-9 my-3">
     <select id="data" class="form-select" aria-label="Default select example">
       <option value='' selected>Formato da data</option>
       <option>Bloco</option>
@@ -30,7 +38,7 @@
   </div>
 
   <div id="bloco" class="campoHora" style="display: none">
-    <div class="col-md-2">
+    <div class="col-md-9">
       <%= form.label :bloco, style:"display: block" %>
       <%= form.select :bloco, ["Manhã", "Tarde", "Noite", "Madrugada"] %>
     </div>
@@ -53,17 +61,30 @@
     </div>
   </div>
 
-  <div>
-    <%= form.label :categoria_id, style: "display: block" %>
-    <%= form.collection_select(:categoria_id, Categorium.all, :id, :nome, :prompt => 'Escolha a categoria') %>
+  <div class="col-md-12 my-3">
+    <div class="col-md-12">
+      <%= form.label :descricao, class: "col-mdm-12" %>
+    </div>
+    <div class="col-md-12">
+      <%= form.text_area :descricao, class: "col-mdm-12 input", style:"background-color: #f5f5f5; border-radius: 0.5rem; border:none"  %>
+    </div>
   </div>
 
-  <div>
+  <div class="col-md-12 my-3">
+    <div class="col-md-12">
+    <%= form.label :categoria_id, style: "display: block" %>
+    </div>
+    <div class="col-md-12">
+    <%= form.collection_select(:categoria_id, Categorium.all, :id, :nome, :prompt => 'Escolha a categoria') %>
+    </div>
+  </div>
+
+  <div class="my-3">
     <%= form.label :status, style: "display: block" %>
     <%= form.select :status, ["Não começado", "Em andamento", "Concluída"] %>
   </div>
 
-  <div>
+  <div class="my-3">
     <%= form.submit %>
   </div>
 <% end %>

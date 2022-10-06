@@ -21,7 +21,7 @@
   </div>
 
   <div class="row">
-    <div id="categoria" class="row ms-5">
+    <div id="categoria" class="row ms-5" style="word-wrap: break-word">
       <% @lembretes.each do |lembretes| %>
         <% if lembretes.categoriums.all[0] != nil %>
           <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white; background-color: <%= lembretes.categoriums.all[0].cor %>;border-radius: 0.5rem">

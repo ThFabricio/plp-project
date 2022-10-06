@@ -58,7 +58,7 @@
         <div class="mt-4">
             <% @lembretes.each do |lembrete| %>
               <% if lembrete.categoriums.all[0] != nil %>
-                <div id="lembretes" class="p-3 mt-3" style="background-color: <%=lembrete.categoriums.all[0].cor %>; border-radius: 0.5rem">
+                <div id="lembretes" class="p-3 mt-3" style="background-color: <%=lembrete.categoriums.all[0].cor %>; border-radius: 0.5rem; word-wrap: break-word">
                   <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
                     <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
                     <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
@@ -67,7 +67,7 @@
                   <% end %>
                 </div>
               <% else %>
-                <div id="lembretes" class="p-3 mt-3" style="background-color: grey; border-radius: 0.5rem">
+                <div id="lembretes" class="p-3 mt-3" style="background-color: grey; border-radius: 0.5rem; word-wrap: break-word">
                   <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
                     <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
                     <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
@@ -91,15 +91,23 @@
         <% atividades.each do |atividade| %>
 
           <% if atividade.categoriums.all[0] != nil %>
-            <div id="atividadeCor" class="card-title py-2 text-center" style="background-color: <%=atividade.categoriums.all[0].cor%>; border-radius: 0.5rem">
-              <%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%>
+            <div id="atividadeCor" class="py-2 text-center my-2" style="background-color: <%=atividade.categoriums.all[0].cor%>; border-radius: 0.5rem">
+              <% if atividade.status == 'Concluída' %>
+                <s><%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%></s>
+              <% else %>
+                <%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%>
+              <% end %>
               <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
                 <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
               </div>
             </div>
           <% else %>
-            <div class="card-title py-2 text-center" style="background-color: grey; border-radius: 0.5rem">
-              <%= link_to atividade.nome, atividade, class: "link_atividade"%>
+            <div class="py-2 px-2 text-center my-2" style="background-color: grey; border-radius: 0.5rem">
+              <% if atividade.status == 'Concluída' %>
+                <s style="color: white"><%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%></s>
+              <% else %>
+                <%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%>
+              <% end %>
               <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
                 <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
               </div>
@@ -111,5 +119,4 @@
     </div>
   </div>
 </div>
-
 

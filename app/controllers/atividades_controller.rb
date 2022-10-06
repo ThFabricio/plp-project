@@ -91,7 +91,7 @@ class AtividadesController < ApplicationController
           end
           AtividadeCategorium.create(categorium_id: atividade_params[:categoria_id], atividade_id: @atividade.id)
         end
-        format.html { redirect_to atividade_url(@atividade), notice: "Atividade was successfully updated." }
+        format.html { redirect_to "/", notice: "Atividade was successfully updated." }
         format.json { render :show, status: :ok, location: @atividade }
       else
         format.html { render :edit, status: :unprocessable_entity }

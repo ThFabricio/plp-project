@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="my-3">
     <%= form.label :nome, style: "display: block" %>
-    <%= form.text_field :nome %>
+    <%= form.text_field :nome, style:"background-color: #f5f5f5; border-radius: 0.5rem; border:none" %>
   </div>
 
-  <div>
+  <div class="my-3">
     <%= form.label :descricao, style: "display: block" %>
-    <%= form.text_area :descricao %>
+    <%= form.text_area :descricao, style:"background-color: #f5f5f5; border-radius: 0.5rem; border:none" %>
   </div>
 
-  <div>
+  <div class="my-3">
     <%= form.label :dia, style: "display: block" %>
     <%= form.datetime_field :dia %>
   </div>
 
-  <div>
+  <div class="my-3">
     <%= form.label :categoria_id, style: "display: block" %>
     <%= form.collection_select(:categoria_id, Categorium.all, :id, :nome, :prompt => 'Escolha a categoria') %>
   </div>
