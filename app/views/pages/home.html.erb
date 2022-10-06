@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row justify-content-between">
-    <div class="col-md-2 py-5 px-3 shadow" style="background-color: white">
+    <div class="col-md-2 py-5 px-3 shadow" style="background-color: white; overflow-y: scroll">
       <div class="mb-5" style="text-align: center">
         <a href="/atividades/new">
           <button type="button" class="btn btn-lg btn-block" style="background-color: #D94339; color: white; font-weight: 600">
@@ -56,33 +56,57 @@
         </div>
 
         <div class="mt-4">
-          <div id="lembretes" class="p-3" style="background-color: grey; border-radius: 0.5rem">
             <% @lembretes.each do |lembrete| %>
-              <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
-                <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
-                <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
-                  <%= lembrete.dia.strftime('%d/%m/%y - %H:%M') %>
+
+              <% if lembrete.categoriums.all[0] != nil %>
+                <div id="lembretes" class="p-3 mt-3" style="background-color: <%=lembrete.categoriums.all[0].cor %>>; border-radius: 0.5rem">
+                  <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
+                    <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
+                    <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+                      <%= lembrete.dia.strftime('%d/%m/%y - %H:%M') %>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <div id="lembretes" class="p-3 mt-3" style="background-color: grey; border-radius: 0.5rem">
+                  <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
+                    <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
+                    <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+                      <%= lembrete.dia.strftime('%d/%m/%y - %H:%M') %>
+                    </div>
+                  <% end %>
                 </div>
               <% end %>
+
             <% end %>
-          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-10 px-0 table-striped">
+    <div class="col-md-10 px-0 table-striped mb-5">
       <%= month_calendar(events: @atividades) do |date, atividades|%>
         <div class="day">
           <%= date.day %>
         </div>
 
         <% atividades.each do |atividade| %>
-          <div class="card-title py-2 text-center" style="background-color: grey; border-radius: 0.5rem">
-            <%= link_to atividade.nome, atividade, class: "link_atividade"%>
-            <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
-              <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
+
+          <% if atividade.categoriums.all[0] != nil %>
+            <div id="atividadeCor" class="card-title py-2 text-center" style="background-color: <%=atividade.categoriums.all[0].cor%>; border-radius: 0.5rem">
+              <%= link_to atividade.nome, atividade, class: "link_atividade", id: "atividadeAtual"%>
+              <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+                <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
+              </div>
             </div>
-          </div>
+          <% else %>
+            <div class="card-title py-2 text-center" style="background-color: grey; border-radius: 0.5rem">
+              <%= link_to atividade.nome, atividade, class: "link_atividade"%>
+              <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+                <%= atividade.start_time.strftime('%H:%M') + ' - ' +atividade.end_time.strftime('%H:%M')%>
+              </div>
+            </div>
+          <%end %>
+
         <% end %>
       <% end %>
     </div>
