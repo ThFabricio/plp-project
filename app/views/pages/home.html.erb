@@ -36,7 +36,7 @@
       </div>
       <div class="my-4">
         <div class="dropdown text-left" style="border-bottom: 2px solid #D94339">
-          <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="/images/insights.svg" alt="">
             <span class="px-2" style="font-size: 1.2rem; font-weight: 500; color: #D94339; vertical-align: middle">Relatório</span>
           </a>
@@ -55,11 +55,21 @@
           </ul>
         </div>
 
-        <div>
-
+        <div class="mt-4">
+          <div id="lembretes" class="p-3" style="background-color: grey; border-radius: 0.5rem">
+            <% @lembretes.each do |lembrete| %>
+              <% unless Date.parse(lembrete.dia.strftime("%Y-%m-%d")).past? %>
+                <%= link_to lembrete.nome, lembrete, class: "link_atividade" %>
+                <div class="mt-1" style="color: white; font-size: 0.9rem; font-weight: 600">
+                  <%= lembrete.dia.strftime('%d/%m/%y - %H:%M') %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="col-md-10 px-0 table-striped">
       <%= month_calendar(events: @atividades) do |date, atividades|%>
         <div class="day">
