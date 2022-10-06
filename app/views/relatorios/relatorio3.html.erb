@@ -1,1 +1,19 @@
-<%= @result %>
+<div class="container my-5">
+
+  <h1>Destacar as semanas e meses mais produtivos</h1>
+
+  <div class="mt-4">
+
+    <h2>Semanal: </h2>
+    <% @res_semanal.each do |res| %>
+      <p>Semana: <%= res[0] %> - Data inicial: <%= Date.commercial(Date.today.year, res[0], 1) %> - Data final: <%= Date.commercial(Date.today.year, res[0], 7) %> - Atividades realizadas: <%= res[1] %></p>
+    <% end %>
+
+    <h2>Mensal: </h2>
+    <% @res_mensal.each do |res| %>
+      <p>Mês: <%= res[0] %> - Data inicial: <%= Date.new(Date.today.year, res[0], 1) %> - Data final: <%= Date.new(Date.today.year, res[0], 1) + 1.month - 1.day %> - Atividades realizadas: <%= res[1] %></p>
+    <% end %>
+
+  </div>
+
+</div>

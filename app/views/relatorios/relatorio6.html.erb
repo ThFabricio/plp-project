@@ -1,5 +1,13 @@
-<h1>Quais as categorias de metas mais realizadas</h1>
+<div class="container my-5">
 
-<% @qtd_metas_por_categoria.each do |qtd_categoria| %>
-  Nome da categoria: <%= qtd_categoria[0] %> - Quantidade de metas realizadas: <%= qtd_categoria[1] %>
-<% end %>
+  <h1>Quais as categorias de metas mais realizadas</h1>
+
+  <div class="mt-4">
+
+    <% @qtd_metas_por_categoria.each do |qtd_categoria| %>
+      Nome da categoria: <%= qtd_categoria[0] %> - Quantidade de metas realizadas: <%= qtd_categoria[1] %>
+    <% end %>
+
+  </div>
+
+</div>

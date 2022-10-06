@@ -1,0 +1,13 @@
+<div class="container my-5">
+
+  <h1>Destacar os turnos mais produtivos</h1>
+
+  <div class="mt-4">
+
+    <% @resultado.each do |res| %>
+      <p>Turno: <%= res[0] %> - Quantidade de tarefas realizadas: <%= res[1] %></p>
+    <% end %>
+
+  </div>
+
+</div>
