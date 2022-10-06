@@ -30,11 +30,11 @@ class MetaController < ApplicationController
     )
 
     if metum_params[:frequencia] == "Semanal"
-      @metum.end_time = @metum.start_time + (metum_params[:quantidade_frequencia].to_i*7).weeks
+      @metum.end_time = @metum.start_time + 7.days
     elsif metum_params[:frequencia] == "Mensal"
-      @metum.end_time = @metum.start_time + metum_params[:quantidade_frequencia].to_i.months
+      @metum.end_time = @metum.start_time + 1.month
     elsif metum_params[:frequencia] == "Anual"
-      @metum.end_time = @metum.start_time + metum_params[:quantidade_frequencia].to_i.years
+      @metum.end_time = @metum.start_time + 1.year
     end
 
     respond_to do |format|
@@ -98,6 +98,6 @@ class MetaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def metum_params
-      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id, :start_time, :quantidade_frequencia)
+      params.require(:metum).permit(:nome, :descricao, :frequencia, :status, :categoria_id, :start_time)
     end
 end
