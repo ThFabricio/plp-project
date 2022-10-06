@@ -90,26 +90,21 @@
 
     };
 
-    /// ; Define o evento onchange no select#estado
     estado.onchange = function(){
-        /// ; this aqui dentro é o select#estado
-        let valor = this.value;                     /// ; <- valor selecionado
-        let selects = Array.from(                   /// ; <- transforma o resultado em array
-            document.getElementsByClassName('campoHora')   /// ; <- pega todos os selects
+
+        let valor = estado.value;
+        let selects = Array.from(
+            document.getElementsByClassName('campoHora')
         );
 
         selects.forEach(function(el){
 
-            if(el.id !== 'estado')  /// ; <- se o select não for o de estado display=none
+            if(el.id !== 'estado')
                 el.style.display='none';
-            if(el.id === value_elem_id[valor] )  /// ; <- se o select é o da cidade display=block;
+            if(el.id === value_elem_id[valor] )
                 el.style.display='block';
 
         });
-
-
-        /// document.getElementById( value_elem_id[valor] ).style.display='block';
-        /// ; outra forma de dar display block
 
     }
 </script>
