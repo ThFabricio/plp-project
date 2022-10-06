@@ -1,14 +1,45 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Lembretes</h1>
+<div id="lembretes" class="container mt-5">
 
-<div id="lembretes">
-  <% @lembretes.each do |lembrete| %>
-    <%= render lembrete %>
-    <p>
-      <%= link_to "Show this lembrete", lembrete %>
-    </p>
-  <% end %>
+  <div class="col-md-10 ms-5">
+    <div class="row justify-content-between" style="border-bottom: 2px solid #989898">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-1 px-0">
+            <%= link_to image_tag("/images/navigate_before.svg", width: 50), "/", class: "alinhamento" %>
+          </div>
+          <div class="col-md-11">
+            <h1 class="px-0 alinhamento">Todos os Lembretes</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <%= link_to image_tag("/images/add_circle.svg", width: 50), new_lembrete_path, class: "alinhamento" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="categoria" class="row ms-5">
+      <% @lembretes.each do |lembretes| %>
+        <% if lembretes.categoriums.all[0] != nil %>
+          <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white; background-color: <%= lembretes.categoriums.all[0].cor %>;border-radius: 0.5rem">
+            <%= render lembretes %>
+            <p>
+              <%= link_to "Visualizar", lembretes, class:"link_atividade" %>
+            </p>
+          </div>
+        <% else %>
+          <div class="mt-4 me-5 col-md-3 py-3 shadow-sm" style="color: white; background-color: grey;border-radius: 0.5rem">
+            <%= render lembretes %>
+            <p>
+              <%= link_to "Visualizar", lembretes, class:"link_atividade" %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
 </div>
-
-<%= link_to "New lembrete", new_lembrete_path %>
