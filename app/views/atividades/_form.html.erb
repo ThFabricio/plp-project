@@ -21,14 +21,40 @@
     <%= form.text_area :descricao %>
   </div>
 
-  <div>
-    <%= form.label :start_time, style: "display: block" %>
-    <%= form.datetime_field :start_time %>
+  <div class="col-md-2">
+    <select id="data" class="form-select" aria-label="Default select example">
+      <option value='' selected>Formato da data</option>
+      <option>Bloco</option>
+      <option>Hora Livre</option>
+    </select>
   </div>
 
-  <div>
-    <%= form.label :end_time, style: "display: block" %>
-    <%= form.datetime_field :end_time %>
+  <div id="bloco" class="campoHora" style="display: none">
+    <div class="col-md-2">
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Horário</option>
+        <option value="1">Manhã</option>
+        <option value="2">Tarde</option>
+        <option value="2">Noite</option>
+        <option value="2">Madrugada</option>
+      </select>
+    </div>
+
+    <div>
+      <input id="date" type="date">
+    </div>
+  </div>
+
+  <div id="hora" class="campoHora" style="display: none">
+    <div>
+      <%= form.label :start_time, style: "display: block" %>
+      <%= form.datetime_field :start_time %>
+    </div>
+
+    <div>
+      <%= form.label :end_time, style: "display: block" %>
+      <%= form.datetime_field :end_time %>
+    </div>
   </div>
 
   <div>
@@ -40,3 +66,37 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+    /// ; Pega o select#estado
+    let estado = document.getElementById("data");
+
+    const value_elem_id = {
+        'Bloco':'bloco',
+        'Hora Livre':'hora'
+
+    };
+
+    /// ; Define o evento onchange no select#estado
+    estado.onchange = function(){
+        /// ; this aqui dentro é o select#estado
+        let valor = this.value;                     /// ; <- valor selecionado
+        let selects = Array.from(                   /// ; <- transforma o resultado em array
+            document.getElementsByClassName('campoHora')   /// ; <- pega todos os selects
+        );
+
+        selects.forEach(function(el){
+
+            if(el.id !== 'estado')  /// ; <- se o select não for o de estado display=none
+                el.style.display='none';
+            if(el.id === value_elem_id[valor] )  /// ; <- se o select é o da cidade display=block;
+                el.style.display='block';
+
+        });
+
+
+        /// document.getElementById( value_elem_id[valor] ).style.display='block';
+        /// ; outra forma de dar display block
+
+    }
+</script>
