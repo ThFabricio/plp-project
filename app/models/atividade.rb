@@ -6,4 +6,5 @@ class Atividade < ApplicationRecord
   validates :descricao, presence: true, length: {minimum: 10}
   validates :start_time, presence: true, comparison: {greater_than: Date.today}, uniqueness: true
   validates :end_time, presence: true, comparison: {greater_than: :start_time}, uniqueness: true
+  validates :status, presence: true
 end
